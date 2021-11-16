@@ -23,7 +23,7 @@ composer install
 ## Package
 - "stancl/tenancy": "^2.3"
 <h3>Tenancy for Laravel</h3> 
-<a href="https://tenancyforlaravel.com/">Documentation</a>
+<a href="https://tenancyforlaravel.com/docs/v2/getting-started/">Documentation</a>
 
 ## Server Setup
 Setup domain with your project with creating virtual host.
