@@ -75,7 +75,7 @@ return [
      * Central domains (hostnames), e.g. domains which host landing pages, sign up pages, etc.
      */
     'exempt_domains' => [
-         'localhost',
+         'localhost','example.com' //change to your domain
     ],
 
     /**

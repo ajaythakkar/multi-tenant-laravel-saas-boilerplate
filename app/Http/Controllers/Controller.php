@@ -2,20 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
-use Illuminate\Foundation\Bus\DispatchesJobs;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Stancl\Tenancy\Tenant;
 
 class Controller extends BaseController
 {
-    //use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-    public function test(){
+    public function register(){
 
-        //to create new Tenant
-        //Tenant::new()->withDomains(['tenant1.localhost'])->withData(['plan' => 'free'])->save();
-        echo"Test";
+        return view('register');
+    }
+
+    public function registerSave(Request $request){
+
+        if($request->subdomain) {
+
+            try {
+                //to create new Tenant
+
+                $subdomain = $request->subdomain . "." . env('CENTRAL_DOMAINM');
+                Tenant::new()
+                    ->withDomains([$subdomain])
+                    ->withData(['plan' => 'free'])->save();
+
+                $url = "http://".$subdomain;
+                echo "Created! <br> <a href='$url'>$subdomain</a>";
+
+            } catch(\Exception $e) {
+
+                echo $e->getMessage();
+            }
+
+        }else{
+
+            echo "No Domain Created!";
+        }
     }
 }

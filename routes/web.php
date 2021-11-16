@@ -14,4 +14,6 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/test', 'Controller@test');
+
+Route::get('/register', 'Controller@register');
+Route::post('/register', 'Controller@registerSave');
